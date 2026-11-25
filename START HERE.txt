@@ -1,0 +1,1 @@
+Extract the entire ZIP. Double-click Innovation City.html for an immediate 3D preview. For the local backend, double-click Run HRZ.cmd with Python 3.10+ installed. See README.md for exact commands and provider setup.

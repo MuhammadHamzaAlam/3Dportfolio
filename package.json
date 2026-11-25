@@ -1,0 +1,16 @@
+{
+  "name": "hrz-innovation-city",
+  "private": true,
+  "scripts": {
+    "build": "node build.mjs",
+    "start": "python AION/service.py",
+    "test:browser": "node tests/browser.cjs"
+  },
+  "dependencies": {
+    "three": "0.170.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.21.5"
+  },
+  "type": "module"
+}

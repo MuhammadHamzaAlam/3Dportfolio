@@ -1,0 +1,184 @@
+[
+  {
+    "source": "Muhammad_Hamza_Alam_AI_ML_Engineer_Resume.pdf",
+    "location": 1,
+    "section": "Profile",
+    "text": "MUHAMMAD HAMZA ALAM PROFESSIONAL SUMMARY Computer Science undergraduate specializing in Artificial Intelligence, Machine Learning, and Generative AI, with hands-on experience developing AI-powered applications using Python, PyTorch, Hugging Face Transformers, and Scikit-learn. Experienced in building end-to-end AI solutions, including Retrieval-Augmented Generation (RAG) systems, conversational voice AI applications, computer vision and geospatial change-detection models, tool-calling LLM assistants, and machine learning-based predictive systems. Strong foundation in machine learning, deep learning, data science, model inference, and backend development, with a passion for solving real-world problems through innovative AI technologies.",
+    "version": "472790edec2327f1"
+  },
+  {
+    "source": "Muhammad_Hamza_Alam_AI_ML_Engineer_Resume.pdf",
+    "location": 1,
+    "section": "EDUCATION",
+    "text": "EDUCATION NED University of Engineering and Technology | Bachelor of Science in Computer Science October 2023 – August 2027 | CGPA: 3.5 / 4.0 Concentrations: Artificial Intelligence, Data Science and Web Development Relevant Coursework: Data Structures & Algorithms, Object-Oriented Programming, Database Systems, Software Engineering, Artificial Intelligence, Operating Systems",
+    "version": "472790edec2327f1"
+  },
+  {
+    "source": "Muhammad_Hamza_Alam_AI_ML_Engineer_Resume.pdf",
+    "location": 1,
+    "section": "Skyline Builders",
+    "text": "Skyline Builders and Developers — Data Analytics Division | Data Analyst Intern | July 2025 – August 2025 • Performed data cleaning, structuring, and preparation to improve data quality and support optimized reporting workflows through Power BI, Excel, and Tableau. • Performed Exploratory Data Analysis (EDA) to identify trends and patterns. • Wrote SQL queries to extract and manipulate data.",
+    "version": "472790edec2327f1"
+  },
+  {
+    "source": "Muhammad_Hamza_Alam_AI_ML_Engineer_Resume.pdf",
+    "location": 1,
+    "section": "Karachi Development Authority",
+    "text": "Karachi Development Authority (KDA) — Information Technology Department | IT Trainee | 22 June 2026 – 15 August 2026 • Gained practical exposure to IT operations and technical support within a government organization. • Developed an understanding of computer systems, software applications, and IT infrastructure. • Provided first-line technical support and troubleshooting for departmental computer systems and software. • Supported routine IT operations and system maintenance procedures within a government organization.",
+    "version": "472790edec2327f1"
+  },
+  {
+    "source": "Muhammad_Hamza_Alam_AI_ML_Engineer_Resume.pdf",
+    "location": 1,
+    "section": "TerraTrace AI",
+    "text": "TerraTrace AI — Geospatial Change Detection & LLM Assistant | Python, PyTorch, FastAPI, React, TypeScript, Rasterio, GeoPandas, Ollama, Docker • Built a full-stack platform that compares satellite/aerial images from different dates and detects building change with a Siamese U-Net (shared ResNet18 encoder) in PyTorch on LEVIR-CD (BCE+Dice loss, AdamW, cosine LR). • Achieved F1 0.857, IoU 0.749 and precision 0.834 on the 128-image held-out test split (full 1024×1024 tiled inference) after an 8-epoch CPU-only run; the test split was never used for model selection. • Converted pixel masks into georeferenced candidate events using Rasterio, GeoPandas and DBSCAN clustering, with multi-date tracking, an analyst review workflow and GeoJSON/PDF/CSV reports; tested on real NAIP imagery.",
+    "version": "472790edec2327f1"
+  },
+  {
+    "source": "Muhammad_Hamza_Alam_AI_ML_Engineer_Resume.pdf",
+    "location": 1,
+    "section": "TerraTrace AI",
+    "text": "• Developed a tool-calling LLM assistant (25 tools, SSE streaming, local Ollama with optional Grok) with a grounding guard that flags answers not backed by data lookups, plus prompt-injection tests; shipped with 52 backend tests, GitHub Actions CI and Docker.",
+    "version": "472790edec2327f1"
+  },
+  {
+    "source": "Muhammad_Hamza_Alam_AI_ML_Engineer_Resume.pdf",
+    "location": 1,
+    "section": "RAG Document QA",
+    "text": "RAG Document QA System — Retrieval-Augmented Generation | Python, LangChain, Ollama, Hugging Face, ChromaDB, PyTorch • Built an end-to-end Retrieval-Augmented Generation (RAG) pipeline in Python with LangChain that answers questions over user-uploaded PDFs such as policies or reports, with answers grounded in the source text. • Implemented PDF ingestion, recursive text chunking, Hugging Face sentence embeddings and Chroma vector storage for semantic retrieval. • Integrated an open-source LLM (Qwen3-4B via Ollama) with MMR-based retrieval to produce context-grounded answers and reduce unsupported (hallucinated) responses. • Runs locally with an open-source model, so no document data leaves the machine, supporting data privacy and responsible AI practice.",
+    "version": "472790edec2327f1"
+  },
+  {
+    "source": "Muhammad_Hamza_Alam_AI_ML_Engineer_Resume.pdf",
+    "location": 1,
+    "section": "RAG Document QA",
+    "text": "• Added conversational history management and a custom prompt pipeline (prompt engineering) to maintain context across multi-turn chats",
+    "version": "472790edec2327f1"
+  },
+  {
+    "source": "Muhammad_Hamza_Alam_AI_ML_Engineer_Resume.pdf",
+    "location": 2,
+    "section": "VoxAI",
+    "text": "VoxAI — AI Voice Assistant | Python, Flask, OpenAI GPT-5 nano, IBM Watson STT/TTS, JavaScript, HTML, CSS • Developed a speech-to-speech assistant that combines the OpenAI API (GPT-5 nano) with IBM Watson Speech-to-Text and Text-to- Speech. • Built the end-to-end pipeline (speech recognition → LLM response → speech synthesis) behind a Flask REST API with background processing and secured API keys. • Created a web-based conversational interface for real-time voice interaction.",
+    "version": "472790edec2327f1"
+  },
+  {
+    "source": "Muhammad_Hamza_Alam_AI_ML_Engineer_Resume.pdf",
+    "location": 2,
+    "section": "Data Engineering Pipelines",
+    "text": "Data Engineering Pipelines — Banking & Global GDP Analytics | Python, Pandas, NumPy, SQL, SQLite, ETL, Web Scraping, unittest, Flake8 • Built end-to-end ETL pipelines for banking and global GDP datasets, covering web data extraction, transformation, validation and SQLite loading. • Processed CSV, JSON and XML data with modular Python functions in Pandas and NumPy, followed by SQL analytical queries and visualization. • Applied engineering practices including PEP 8, Flake8 static analysis, unit testing with Python unittest, database validation and ETL process logging.",
+    "version": "472790edec2327f1"
+  },
+  {
+    "source": "Muhammad_Hamza_Alam_AI_ML_Engineer_Resume.pdf",
+    "location": 2,
+    "section": "NexoRa",
+    "text": "NexoRa — AI Inventory Optimization & Demand Forecasting | Python, Pandas, NumPy, Scikit-learn, Random Forest, GridSearchCV, Matplotlib, Seaborn, Flask, React, Firebase • Built an AI-powered inventory system that reduces overstocking and stockouts through Random Forest demand forecasting combined with Economic Order Quantity (EOQ) logic for replenishment decisions. • Implemented data preprocessing, missing-value imputation, feature encoding and scaling using Scikit-learn Pipelines. • Tuned hyperparameters with GridSearchCV and 5-fold cross-validation, and evaluated forecasts with MAE, RMSE and R2 to confirm model quality.",
+    "version": "472790edec2327f1"
+  },
+  {
+    "source": "Muhammad_Hamza_Alam_AI_ML_Engineer_Resume.pdf",
+    "location": 2,
+    "section": "TECHNICAL SKILLS",
+    "text": "TECHNICAL SKILLS Cloud & AI Services: OpenAI API, IBM Watson STT/TTS, Firebase, LLM API Integration, Conversational & Voice AI Generative AI & LLMs: Retrieval-Augmented Generation (RAG), LangChain, Hugging Face Transformers, Open-Source LLMs (Ollama, Qwen3), LLM Tool Calling, Embeddings & Semantic Search, Vector Databases (ChromaDB), Prompt Engineering Programming: Python , JavaScript, C, C++, C# AI / Machine Learning: Machine Learning, Supervised Learning, Classification, Random Forest, XGBoost, Scikit-learn, Model Evaluation, Hyperparameter Tuning, Cross-Validation Data Science & Visualization: Pandas, NumPy, Exploratory Data Analysis (EDA), Data Cleaning, Missing Value Imputation, Feature Engineering, Data Preprocessing, Data Visualization, Power BI, Tableau, Matplotlib, Seaborn Computer Vision & Geospatial: OpenCV , MediaPipe ,U-Net Segmentation, Siamese Networks, Change Detection, Rasterio, GeoPandas, GeoJSON, DBSCAN, Model Evaluation (F1, IoU) Backend & APIs: Python REST APIs (Flask, FastAPI), SQLAlchemy, API Integration, Asynchronous Processing, Postman, React.js, TypeScript, HTML, CSS, Tailwind CSS Databases: MySQL, MongoDB, Firebase, SQLite, SQL Tools & AI Development: Git, GitHub, GitHub Actions (CI), VS Code, Postman, Docker , Claude Code Engineering: OOP, Data Structures & Algorithms, Testing, Debugging, Database Design",
+    "version": "472790edec2327f1"
+  },
+  {
+    "source": "Muhammad_Hamza_Alam_AI_ML_Engineer_Resume.pdf",
+    "location": 2,
+    "section": "CERTIFICATIONS",
+    "text": "CERTIFICATIONS • Google AI Professional Certificate — Google | Credential ID: SYKY1UUPNW98 | Verify Credential • Python for Data Science and Artificial Intelligence — IBM | Credential ID: TGC1K6KWLTRV | Verify Credential • Developing AI Applications with Python and Flask — IBM | Credential ID: O4DFCTTFYJNF | Verify Credential • Building Generative AI-Powered Applications with Python — IBM | Credential ID: CLS9T9O72C3A | Verify Credential • Machine Learning With Python — IBM | Credential ID: LNH502SIYFL3 | Verify Credential • Deloitte Australia – Technology Job Simulation — Forage | Credential ID: RgJSahZbumZRcuEoF | Verify Credential",
+    "version": "472790edec2327f1"
+  },
+  {
+    "source": "(GoogleAIProfessional.pdf",
+    "location": 1,
+    "section": "Certifications",
+    "text": "7 Courses AI Fundamentals AI for Brainstorming and Planning AI for Research and Insights AI for Writing and Communicating AI for Content Creation AI for Data Analysis AI for App Building Amanda Brophy Global Director of Google Career Certificates Jun 20, 2026 MUHAMMAD HAMZA ALAM has successfully completed the online Professional Certificate Google AI Those who earn the Google AI Professional Certificate are fluent in AI, and have completed 7 courses demonstrating their ability to apply AI to the skills where AI is transforming work: Brainstorming, Research, Communication, Content Creation, Data Analysis, and coding. They have built a portfolio of 20+ artifacts using AI, and vibe coded a custom AI solution. They prompt effectively, evaluate outputs, and leverage AI tools responsibly to solve real workplace challenges. This certificate attests to the learner’s completion of an online program delivered via Coursera. It does not constitute formal enrollment at any university or entity and does not itself grant academic credit, grades, or a degree. Institutions or organizations may, at their discretion, recognize this learning toward their own programs or credentials. Verify this certificate at: https://coursera.org/verify/profession al-cert/SYKY1UUPNW98",
+    "version": "8395b5452c9741bd"
+  },
+  {
+    "source": "python for AI DS.pdf",
+    "location": 1,
+    "section": "Certifications",
+    "text": "A ug 15, 2026 Muhammad Hamza Alam Python for Data Science, AI & Development an online course authorized by IBM and offered through Coursera has successfully completed Joseph Santarcangelo Senior Data Scientist IBM Verify at: https://coursera.org/verify/TGC1K6KWLTRV C ou r ser a h as con fir med th e id en tity of th is in d iv id u al an d th eir p ar ticip ation in th e cou r se. This certificate attests to the learner’s completion of an online course / project delivered via Coursera. It does not constitute formal enrollment at any university or entity and does not itself grant academic credit, grades, or a degree. Institutions or organizations may, at their discretion, recognize this learning toward their own programs or credentials.",
+    "version": "008ccd265931dc22"
+  },
+  {
+    "source": "AI App.pdf",
+    "location": 1,
+    "section": "Certifications",
+    "text": "Sep 2, 2026 Muhammad Hamza Alam Developing AI Applications with Python and Flask an online course authorized by IBM and offered through Coursera has successfully completed Ramesh Sannareddy Data Engineering Subject Matter Expert SkillUp Verify at: https://coursera.org/verify/O4DFCTTFYJNF C ou r ser a h as con fir med th e id en tity of th is in d iv id u al an d th eir p ar ticip ation in th e cou r se. This certificate attests to the learner’s completion of an online course / project delivered via Coursera. It does not constitute formal enrollment at any university or entity and does not itself grant academic credit, grades, or a degree. Institutions or organizations may, at their discretion, recognize this learning toward their own programs or credentials.",
+    "version": "4fe1f3e3579cf21f"
+  },
+  {
+    "source": "GenAI.pdf",
+    "location": 1,
+    "section": "Certifications",
+    "text": "Oct 18, 2026 Muhammad Hamza Alam Building Generative AI-Powered Applications with Python an online course authorized by IBM and offered through Coursera has successfully completed Antonio Cangiano Director IBM Skills Network Sina Nazeri (Ph.D.) Data Scientist IBM Verify at: https://coursera.org/verify/CLS9T9O72C3A Coursera has confirmed the identity of this individual and their participation in the course. This certificate attests to the learner’s completion of an online course / project delivered via Coursera. It does not constitute formal enrollment at any university or entity and does not itself grant academic credit, grades, or a degree. Institutions or organizations may, at their discretion, recognize this learning toward their own programs or credentials.",
+    "version": "9bf6a6fe62267a9c"
+  },
+  {
+    "source": "ML.pdf",
+    "location": 1,
+    "section": "Certifications",
+    "text": "Oct 18, 2026 Muhammad Hamza Alam Machine Learning with Python an online course authorized by IBM and offered through Coursera has successfully completed Jeff Grossman Joseph Santarcangelo Saeed Aghabozorgi Verify at: https://coursera.org/verify/LNH502SIYFL3 Coursera has confirmed the identity of this individual and their participation in the course. This certificate attests to the learner’s completion of an online course / project delivered via Coursera. It does not constitute formal enrollment at any university or entity and does not itself grant academic credit, grades, or a degree. Institutions or organizations may, at their discretion, recognize this learning toward their own programs or credentials.",
+    "version": "afc1388d7ab37621"
+  },
+  {
+    "source": "Deloitte.pdf",
+    "location": 1,
+    "section": "Certifications",
+    "text": "Muhammad Hamza Alam Technology Job Simulation Certificate of Completion July 2nd, 2026 Over the period of July 2026, Muhammad Hamza Alam has completed practical tasks in: Coding Development Tina McCreery Chief Human Resources Officer, Deloitte Enrolment Verification Code RgJSahZbumZRcuEoF |",
+    "version": "7a6ba65893b460b8"
+  },
+  {
+    "source": "Pasted text.txt",
+    "location": "Department 01",
+    "section": "01 — CENTRAL PLAZA / HRZ HEADQUARTERS",
+    "text": "Welcome to HRZ — AI Innovation City. This interactive portfolio showcases the work of Muhammad Hamza Alam, a Computer Science undergraduate specializing in artificial intelligence, machine learning, and generative AI. Around this plaza, you'll discover projects in computer vision, document retrieval, conversational voice AI, predictive inventory systems, and data engineering. I'll be your guide throughout the city.",
+    "version": "a21e950872c73a28"
+  },
+  {
+    "source": "Pasted text.txt",
+    "location": "Department 02",
+    "section": "02 — EARTH OBSERVATION CENTER",
+    "text": "Welcome to the Earth Observation Center. This building showcases TerraTrace AI, Hamza's geospatial change-detection platform. It compares satellite and aerial images captured on different dates to identify building changes. The computer vision model uses a Siamese U-Net with a shared ResNet18 encoder. On a 128-image held-out test split, the project achieved an F1 score of 0.857, IoU of 0.749, and precision of 0.834. You can explore the image comparisons, inspect the model architecture, and see how segmentation results become geographic events.",
+    "version": "a21e950872c73a28"
+  },
+  {
+    "source": "Pasted text.txt",
+    "location": "Department 03",
+    "section": "03 — KNOWLEDGE LIBRARY",
+    "text": "Welcome to the Knowledge Library. This department represents Hamza's Retrieval-Augmented Generation system, designed to answer questions about uploaded PDF documents using evidence from their contents. The system splits documents into chunks, generates Hugging Face embeddings, stores them in ChromaDB, and uses MMR retrieval to select relevant passages. Qwen3-4B, running locally through Ollama, then produces answers grounded in the retrieved text. You can explore the document-processing and retrieval workflow inside.",
+    "version": "a21e950872c73a28"
+  },
+  {
+    "source": "Pasted text.txt",
+    "location": "Department 04",
+    "section": "04 — COMMUNICATION TOWER",
+    "text": "Welcome to the Communication Tower. This is VoxAI, Hamza's speech-to-speech AI assistant. The system uses IBM Watson Speech-to-Text to understand spoken requests, GPT-5 nano to generate responses, and IBM Watson Text-to-Speech to speak those responses aloud. A Flask backend connects the components, while a web interface allows real-time voice interaction. Inside, you can explore the speech-processing pipeline from incoming audio to the final spoken response.",
+    "version": "a21e950872c73a28"
+  },
+  {
+    "source": "Pasted text.txt",
+    "location": "Department 05",
+    "section": "05 — SMART WAREHOUSE",
+    "text": "Welcome to the Smart Warehouse. This is NexoRa, Hamza's AI-powered inventory optimization project. It uses Random Forest machine learning to forecast product demand and combines those forecasts with Economic Order Quantity calculations to support replenishment decisions. The project includes data preprocessing, hyperparameter tuning with GridSearchCV, and evaluation using MAE, RMSE, and R-squared. Explore the warehouse to see how forecasting and inventory decisions work together.",
+    "version": "a21e950872c73a28"
+  },
+  {
+    "source": "Pasted text.txt",
+    "location": "Department 06",
+    "section": "06 — DATA CENTER",
+    "text": "Welcome to the Data Center. This department showcases Hamza's data engineering pipelines for banking and global GDP analytics. The projects extract information from web sources and structured files, clean and transform it with Python, Pandas, and NumPy, validate the processed records, and load them into SQLite for analytical queries. Inside, you'll follow the complete ETL process and see how raw data becomes organized information for analysis.",
+    "version": "a21e950872c73a28"
+  },
+  {
+    "source": "Pasted text.txt",
+    "location": "Department 07",
+    "section": "07 — CAREER & CREDENTIALS PAVILION",
+    "text": "Welcome to the Career and Credentials Pavilion. This is where you can learn about the person behind HRZ Innovation City. Muhammad Hamza Alam is studying Computer Science at NED University of Engineering and Technology. His experience includes a Data Analyst internship at Skyline Builders and Developers and an IT trainee role at Karachi Development Authority. This Pavilion also presents his verified Google, IBM, and Deloitte Australia / Forage learning credentials. I'll guide you through his education, professional experience, and achievements.",
+    "version": "a21e950872c73a28"
+  }
+]
