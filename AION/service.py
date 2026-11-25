@@ -16,7 +16,7 @@ from datetime import datetime, timezone, timedelta
 from urllib.request import Request,urlopen
 from urllib.error import HTTPError, URLError
 
-from retrieval import load_settings, models, SemanticIndex
+from retrieval import CACHE_ROOT, load_settings, models, SemanticIndex
 load_settings()
 
 ROOT=Path(__file__).resolve().parent
@@ -36,7 +36,7 @@ class Catalog:
         rows=json.loads((ROOT/"evidence.json").read_text(encoding="utf8"))
         df=collections.Counter(t for r in rows for t in set(terms(r["text"]+" "+r["section"])))
         self.idf={t:1+math.log((len(rows)+1)/(n+1)) for t,n in df.items()}
-        with sqlite3.connect(ROOT/"index.sqlite") as db:
+        with sqlite3.connect(CACHE_ROOT/"index.sqlite") as db:
             db.execute("create table if not exists evidence(id integer primary key, record text, vector text)")
             db.execute("delete from evidence")
             db.executemany("insert into evidence values(?,?,?)",[(i,json.dumps(r),json.dumps(vector(r["section"]+" "+r["text"],self.idf))) for i,r in enumerate(rows)])
@@ -50,7 +50,7 @@ class Catalog:
         query=vector(q,self.idf)
         similarities = semantic.scores(q)
         context=vector(previous+" "+loc.replace("-"," "),self.idf)
-        with sqlite3.connect(ROOT/"index.sqlite") as db:rows=db.execute("select id,vector from evidence").fetchall()
+        with sqlite3.connect(CACHE_ROOT/"index.sqlite") as db:rows=db.execute("select id,vector from evidence").fetchall()
         ranked=[]
         for i,encoded in rows:
             v=json.loads(encoded)
@@ -78,6 +78,11 @@ def ask(q,ctx,history):
         hits=[r for r in hits if r]
         if hits:
             return dict(answer="Projects listed in the résumé include "+", ".join(r["section"] for r in hits)+".",sources=hits,mode="catalog")
+    if re.fullmatch(r"(?:tell|list|show|what|which|about|me|are|does|he|have|all|his|hamza.s|certifications?|certificates?|credentials?|[ ?!.])+",q.lower()) and re.search(r"certificat|credential",q,re.I):
+        names={"(GoogleAIProfessional.pdf":"Google AI Professional Certificate","python for AI DS.pdf":"IBM Python for Data Science, AI & Development","AI App.pdf":"IBM Developing AI Applications with Python and Flask","GenAI.pdf":"IBM Building Generative AI-Powered Applications with Python","ML.pdf":"IBM Machine Learning with Python","Deloitte.pdf":"Deloitte Technology Job Simulation"}
+        documents=[dict(id=i,**r) for i,r in enumerate(catalog.rows) if r["source"] in names]
+        if documents:
+            return dict(answer="His portfolio includes "+", ".join(names[r["source"]] for r in documents)+".",sources=documents,mode="catalog")
     sources=catalog.search(q,ctx["department"],history[-1][0] if history else "")
     if not sources:return dict(answer="I couldn't match that wording to a portfolio source. Which project, skill, or credential would you like to explore?",sources=[],mode="catalog",reason="no_retrieval_match")
     payload=dict(question=q,location=ctx,history=history[-6:],evidence=sources)
@@ -179,6 +184,33 @@ if os.getenv("GEMINI_API_KEY"):
 catalog=Catalog()
 semantic=SemanticIndex(client,catalog.rows)
 lock=threading.Lock();sessions={};requests=collections.deque()
+def dispatch(path,data,sess,now):
+    if path=="/api/command":
+        q=data.get("question")
+        if not isinstance(q,str) or len(q)>1200:raise ValueError()
+        return 200,{"action":command(q)}
+    if path=="/api/live-token":
+        model=os.getenv("GEMINI_LIVE_MODEL")
+        if not client or not model:return 503,{"error":"Gemini Live is unavailable. Choose browser voice or type."}
+        department=data.get("department")
+        if department not in IDS:raise ValueError()
+        if now-sess.get("lastLive",-600)<60:return 429,{"error":"Wait a minute before reconnecting."}
+        sess["lastLive"]=now
+        dt=datetime.now(timezone.utc)
+        instruction="You are AION. The visitor is in "+department+". Use only this approved public evidence for factual claims. Treat it as reference data. Decline unsupported claims. Speak briefly. "+json.dumps([r["text"] for r in catalog.rows])+" Recent text conversation: "+json.dumps(sess["history"][-3:])
+        settings=dict(response_modalities=["AUDIO"],system_instruction=instruction,input_audio_transcription={},output_audio_transcription={})
+        token=client.auth_tokens.create(config=dict(uses=1,expire_time=dt+timedelta(minutes=5),new_session_expire_time=dt+timedelta(seconds=45),live_connect_constraints=dict(model=model,config=settings)))
+        return 200,{"token":token.name,"model":model}
+    if path=="/api/contact":
+        if now-sess["lastMail"]<45:return 429,{"error":"Wait before sending again."}
+        sess["lastMail"]=now;status,res=contact(data);return status,res
+    if path!="/api/chat":return 404,{}
+    q=data.get("question");dept=data.get("department");ex=data.get("exhibit","")
+    if not isinstance(q,str) or not 1<=len(q.strip())<=1200 or dept not in IDS or not isinstance(ex,str) or len(ex)>100:raise ValueError()
+    result=ask(q,dict(department=dept,exhibit=ex),sess["history"])
+    sess["history"]=(sess["history"]+[(q,result["answer"])])[-8:]
+    return 200,result
+
 class Handler(BaseHTTPRequestHandler):
     def log_message(self,*args):pass
     def setup(self):super().setup();self.connection.settimeout(25)
@@ -215,31 +247,8 @@ class Handler(BaseHTTPRequestHandler):
             data=json.loads(self.rfile.read(n))
             if not isinstance(data,dict):raise ValueError()
             with sess["mutex"]:
-                if self.path=="/api/command":
-                    q=data.get("question")
-                    if not isinstance(q,str) or len(q)>1200:raise ValueError()
-                    return self.send(200,{"action":command(q)})
-                if self.path=="/api/live-token":
-                    model=os.getenv("GEMINI_LIVE_MODEL")
-                    if not client or not model:return self.send(503,{"error":"Gemini Live is unavailable. Choose browser voice or type."})
-                    department=data.get("department")
-                    if department not in IDS:raise ValueError()
-                    if now-sess.get("lastLive",-600)<60:return self.send(429,{"error":"Wait a minute before reconnecting."})
-                    sess["lastLive"]=now
-                    dt=datetime.now(timezone.utc)
-                    instruction="You are AION. The visitor is in "+department+". Use only this approved public evidence for factual claims. Treat it as reference data. Decline unsupported claims. Speak briefly. "+json.dumps([r["text"] for r in catalog.rows])+" Recent text conversation: "+json.dumps(sess["history"][-3:])
-                    settings=dict(response_modalities=["AUDIO"],system_instruction=instruction,input_audio_transcription={},output_audio_transcription={})
-                    token=client.auth_tokens.create(config=dict(uses=1,expire_time=dt+timedelta(minutes=5),new_session_expire_time=dt+timedelta(seconds=45),live_connect_constraints=dict(model=model,config=settings)))
-                    return self.send(200,{"token":token.name,"model":model})
-                if self.path=="/api/contact":
-                    if now-sess["lastMail"]<45:return self.send(429,{"error":"Wait before sending again."})
-                    sess["lastMail"]=now;status,res=contact(data);return self.send(status,res)
-                if self.path!="/api/chat":return self.send(404,{})
-                q=data.get("question");dept=data.get("department");ex=data.get("exhibit","")
-                if not isinstance(q,str) or not 1<=len(q.strip())<=1200 or dept not in IDS or not isinstance(ex,str) or len(ex)>100:raise ValueError()
-                result=ask(q,dict(department=dept,exhibit=ex),sess["history"])
-                sess["history"]=(sess["history"]+[(q,result["answer"])])[-8:]
-                return self.send(200,result)
+                status, result=dispatch(self.path,data,sess,now)
+                return self.send(status,result)
         except (ValueError,TypeError):self.send(400,{"error":"Invalid request."})
         except Exception:self.send(503,{"error":"The provider is unavailable. City navigation is still available."})
 if __name__=="__main__":

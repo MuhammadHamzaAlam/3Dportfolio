@@ -1,7 +1,11 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": null,
-  "installCommand": "echo Using prebuilt portfolio",
-  "buildCommand": "node -e \"const fs=require('node:fs'); fs.mkdirSync('dist',{recursive:true}); fs.copyFileSync('Innovation City.html','dist/index.html')\"",
-  "outputDirectory": "dist"
+  "framework": "flask",
+  "buildCommand": "python -c \"from pathlib import Path; import shutil; Path('public').mkdir(exist_ok=True); shutil.copyfile('Innovation City.html','public/index.html')\"",
+  "functions": {
+    "app.py": {
+      "maxDuration": 60,
+      "includeFiles": "AION/evidence.json"
+    }
+  }
 }

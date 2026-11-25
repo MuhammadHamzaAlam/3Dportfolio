@@ -4,11 +4,13 @@ import json
 import math
 import os
 import sqlite3
+import tempfile
 import threading
 import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
+CACHE_ROOT = Path(tempfile.gettempdir()) if os.getenv("VERCEL") else ROOT
 SETTINGS = set("""GEMINI_API_KEY GEMINI_CHAT_MODEL GEMINI_CHAT_FALLBACK_MODELS GEMINI_EMBEDDING_MODEL
 GEMINI_LIVE_MODEL RESEND_API_KEY CONTACT_FROM CONTACT_TO EMAIL_FROM_ADDRESS CONTACT_RECIPIENT_EMAIL AION_PORT""".split())
 
@@ -58,7 +60,7 @@ class SemanticIndex:
     def build(self):
         try:
             vectors = []
-            with sqlite3.connect(ROOT / "embeddings.sqlite") as db:
+            with sqlite3.connect(CACHE_ROOT / "embeddings.sqlite") as db:
                 db.execute("create table if not exists embeddings(key text primary key, value text)")
                 for doc in self.documents:
                     key = hashlib.sha256((self.model+"\0"+doc).encode()).hexdigest()
